@@ -1,5 +1,6 @@
 var elixir = require('laravel-elixir')
 var babelify = require('babelify')
+var historyApiFallback = require('connect-history-api-fallback')
 
 elixir(function(mix) {
   mix
@@ -18,7 +19,8 @@ elixir(function(mix) {
     .browserSync({
       proxy: false,
       server: {
-        baseDir: './public'
+        baseDir: './public',
+        middleware: [historyApiFallback()]
       }
     })
 })
